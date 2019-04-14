@@ -19,9 +19,9 @@ node {
    }
    stage('SonarQube Analysis') {
        // requires SonarQube Scanner 2.8+
-       //def scannerHome = tool 'SonarQube';
+       def scannerHome = tool 'SonarQube';
        withSonarQubeEnv('My SonarQube Server') {
-         //sh "${scannerHome}/bin/sonar-scanner"
+         sh "${scannerHome}/bin/sonar-scanner"
          sh 'mvn sonar:sonar'
    }   
    stage('Results') {
