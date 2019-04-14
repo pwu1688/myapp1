@@ -17,14 +17,6 @@ node {
          bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
       }
    }
-   stage('SonarQube Analysis') {
-       // requires SonarQube Scanner 2.8+
-       def scannerHome = tool 'SonarQube';
-       withSonarQubeEnv('My SonarQube Server') {
-         sh "${scannerHome}/bin/sonar-scanner"
-         sh 'mvn sonar:sonar'
-       }
-   }   
    stage('Results') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       archiveArtifacts 'target/*.jar'
