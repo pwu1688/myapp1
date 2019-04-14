@@ -7,6 +7,7 @@ node {
       // ** NOTE: This 'M3' Maven tool must be configured
       // **       in the global configuration.           
       mvnHome = tool 'M3'
+      echo "Maven Home: ${mvnHome}"
    }
    stage('Build') {
       // Run the maven build
@@ -19,5 +20,6 @@ node {
    stage('Results') {
       //junit '**/target/surefire-reports/TEST-*.xml'
       archiveArtifacts 'target/*.jar'
+      echo "Pipeline Completed"
    }
 }
