@@ -23,6 +23,7 @@ node {
        withSonarQubeEnv('My SonarQube Server') {
          sh "${scannerHome}/bin/sonar-scanner"
          sh 'mvn sonar:sonar'
+       }
    }   
    stage('Results') {
       //junit '**/target/surefire-reports/TEST-*.xml'
